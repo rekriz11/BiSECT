@@ -20,7 +20,7 @@ def main(complex_file, simple_file, output_file):
 
 	fps = open(output_file, "w")
 
-	total = 0
+	stats = {'1': 0, '2': 0, '3': 0, 'unparseable': 0, 'bad': 0}
 	for src, dst_org in tqdm(zip(open(complex_file), open(simple_file)), desc="Classifying pairs..."):
 		src = src.strip()
 		dst_org = dst_org.strip()
@@ -42,10 +42,13 @@ def main(complex_file, simple_file, output_file):
 
 			if dst is not None and label > 0:
 				fps.write(src + "\t" + dst + "\t" + dst_org + "\t" + str(label) + "\n")
+				stats[str(label)] += 1
+			else:
+				stats['bad'] += 1
+		else:
+			stats['unparseable'] += 1
+	print("Stats: {}".format(stats))
 
-		total += 1
-		if total % 10 == 0:
-			print(total , "processed")
 
 	tree_fns.close()
 	fps.close()
