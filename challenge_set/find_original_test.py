@@ -14,7 +14,7 @@ def write_output(data, output_path):
 
 def main(args):
 	train_complex = read_file(args.data_folder + "train.complex")
-	train_simple = read_file(args.data_folder + "train.complex")
+	train_simple = read_file(args.data_folder + "train.simple")
 	train_dataset = read_file(args.data_folder + "train.dataset")
 
 	original_test = {"complex": [], "simple": []}
