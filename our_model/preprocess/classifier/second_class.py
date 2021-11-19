@@ -21,6 +21,18 @@ class SecondClass:
 
 		sep_index = [i for i, tokens in enumerate(diff_tokens) if tokens[0] == "+" and "SEPAX" in tokens[1]][0]
 
+		try:
+			a = diff_tokens[sep_index][1][1]
+		except IndexError:
+			print("SOURCE: {}".format(src))
+			print("TARGET: {}".format(dst))
+			print("DIFF_TOKENS: {}".format(diff_tokens))
+			print("SEP_INDEX: {}".format(sep_index))
+			print(diff_tokens[sep_index])
+			print(diff_tokens[sep_index][1])
+			print(diff_tokens[sep_index][1][1])
+			a = bbb
+
 		if diff_tokens[sep_index][1][1] == "SEPAX":
 			sindex = 0
 			dindex = 0
