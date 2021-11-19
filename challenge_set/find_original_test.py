@@ -19,7 +19,7 @@ def main(args):
 
 	original_test = {"complex": [], "simple": []}
 	for i, tc in enumerate(train_complex):
-		ts, td = train_simple[i], train_dataset[i]
+		ts, td = train_simple[i].replace(" _SPLIT_ ", " <SEP> "), train_dataset[i]
 		if td in ["jrc", "emea"]:
 			original_test["complex"].append(tc)
 			original_test["simple"].append(ts)
