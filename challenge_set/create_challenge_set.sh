@@ -1,8 +1,8 @@
 #!/bin/sh
 source "/exp/rkriz/venv/bin/activate"
 
-DATA_FOLDER = $1
-OUTPUT_FOLDER = $2
+DATA_FOLDER=$1
+OUTPUT_FOLDER=$2
 
 mkdir -p $OUTPUT_FOLDER
 
