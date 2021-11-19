@@ -14,8 +14,8 @@ python challenge_set/find_original_test.py \
 cd our_model/preprocess/classifier/
 
 python classifier.py \
--c "${OUTPUT_FOLDER}/test.complex" \
--r "${OUTPUT_FOLDER}/test.simple" \
--o "${OUTPUT_FOLDER}/test.labels"
+-c "${OUTPUT_FOLDER}/test_original.complex" \
+-r "${OUTPUT_FOLDER}/test_original.simple" \
+-o "${OUTPUT_FOLDER}/test_original.labels"
 
 # ./challenge_set/create_challenge_set.sh /exp/rkriz/data/bisect/en-final/ /exp/rkriz/data/bisect/challenge_set/
