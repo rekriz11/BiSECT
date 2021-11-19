@@ -1,4 +1,5 @@
 import sys
+from tqdm import tqdm
 import argparse
 from collections import Counter
 from nltk import word_tokenize
@@ -20,7 +21,7 @@ def main(complex_file, simple_file, output_file):
 	fps = open(output_file, "w")
 
 	total = 0
-	for src, dst_org in zip(open(complex_file), open(simple_file)):
+	for src, dst_org in tqdm(zip(open(complex_file), open(simple_file)), desc="Classifying pairs..."):
 		src = src.strip()
 		dst_org = dst_org.strip()
 
