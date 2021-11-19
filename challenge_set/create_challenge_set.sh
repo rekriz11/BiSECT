@@ -3,7 +3,8 @@ source "/exp/rkriz/venv/bin/activate"
 
 DATA_FOLDER=$1
 OUTPUT_FOLDER=$2
-
+echo "DATA_FOLDER: ${DATA_FOLDER}"
+echo "OUTPUT_FOLDER: ${OUTPUT_FOLDER}\n"
 mkdir -p $OUTPUT_FOLDER
 
 python challenge_set/find_original_test.py \
