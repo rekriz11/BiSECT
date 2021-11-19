@@ -11,7 +11,7 @@ python challenge_set/find_original_test.py \
 -data_folder $DATA_FOLDER \
 -output_folder $OUTPUT_FOLDER
 
-cd our_model/preprocess/classify/
+cd our_model/preprocess/classifier/
 
 python classifier.py \
 -r "${OUTPUT_FOLDER}/test.complex" \
