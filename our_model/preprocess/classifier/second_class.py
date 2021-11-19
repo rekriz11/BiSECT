@@ -24,6 +24,7 @@ class SecondClass:
 		try:
 			a = diff_tokens[sep_index][1][1]
 		except IndexError:
+			print("Error tracking separator")
 			return None
 
 		if diff_tokens[sep_index][1][1] == "SEPAX":
