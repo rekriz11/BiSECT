@@ -4,7 +4,7 @@ from stanfordcorenlp import StanfordCoreNLP
 
 class TreeFunctions:
 	def __init__(self):
-		self.nlp = StanfordCoreNLP(r'stanford-corenlp-4.2.0')
+		self.nlp = StanfordCoreNLP(r'/exp/rkriz/models/stanford-corenlp-4.2.0')
 
 	def get_tree(self, src_to_parse):
 		try:
