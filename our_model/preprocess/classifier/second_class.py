@@ -24,14 +24,7 @@ class SecondClass:
 		try:
 			a = diff_tokens[sep_index][1][1]
 		except IndexError:
-			print("SOURCE: {}".format(src))
-			print("TARGET: {}".format(dst))
-			print("DIFF_TOKENS: {}".format(diff_tokens))
-			print("SEP_INDEX: {}".format(sep_index))
-			print(diff_tokens[sep_index])
-			print(diff_tokens[sep_index][1])
-			print(diff_tokens[sep_index][1][1])
-			a = bbb
+			return None
 
 		if diff_tokens[sep_index][1][1] == "SEPAX":
 			sindex = 0
