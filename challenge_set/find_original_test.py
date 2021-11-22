@@ -21,12 +21,12 @@ def main(args):
 	cr, sr = 0, 0
 	for i, tc in enumerate(train_complex):
 		if tc[-1] == ';':
-			tc[-1] = .
+			tc[-1] = '.'
 			cr += 1
 		ts = train_simple[i].replace(" _SPLIT_ ", " <SEP> ")
 		ts = ts.replace("_SPLIT_ ", " <SEP> ")
 		if ts[-1] == ';':
-			ts[-1] = .
+			ts[-1] = '.'
 			sr += 1
 		td = train_dataset[i]
 		if td in ["jrc", "emea"]:
