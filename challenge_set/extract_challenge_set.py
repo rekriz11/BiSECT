@@ -23,14 +23,16 @@ def main(args):
 			if len(instance[0].split()) < 0.8 * len(instance[2].split()) or len(instance[2].split()) < 0.8 * len(instance[0].split()):
 				#print("\nComplex: {}\nSplit: {}".format(instance[0], instance[2]))
 				length_diffs += 1
-			elif instance[0][-1] not in ['.', '?', '!']:
+			elif instance[0][-1] not in ['.', '?', '!', ';']:
 				source_endings.append(instance[0][-1])
-			elif instance[2][-1] not in ['.', '?', '!']:
-				target_endings.append(instance[2][-1])
 			else:
-				original_test['complex'].append(instance[0])
-				original_test['simple'].append(instance[2])
-	print("Source Endings: {}".format(source_endings))
+				src, dst = instance[0], instance[2]
+				if src[-1] == ';':
+					src = src[:-1] + '.'
+				if dst[-1] == '.':
+					dst = dst[:-1] + '.'
+				original_test['complex'].append(src)
+				original_test['simple'].append(dst)
 	print("Source Endings: {}, Target Endings: {}".format(dict(Counter(source_endings)), dict(Counter(target_endings))))
 
 	print("Length diffs: {}, Not complete source: {}, Not complete target: {}".format(length_diffs, len(source_endings), len(target_endings)))
