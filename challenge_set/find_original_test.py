@@ -18,13 +18,22 @@ def main(args):
 	train_dataset = read_file(args.data_folder + "train.dataset")
 
 	original_test = {"complex": [], "simple": []}
+	cr, sr = 0, 0
 	for i, tc in enumerate(train_complex):
+		if tc[-1] == ';':
+			tc[-1] = .
+			cr += 1
 		ts = train_simple[i].replace(" _SPLIT_ ", " <SEP> ")
 		ts = ts.replace("_SPLIT_ ", " <SEP> ")
+		if ts[-1] == ';':
+			ts[-1] = .
+			sr += 1
 		td = train_dataset[i]
 		if td in ["jrc", "emea"]:
 			original_test["complex"].append(tc)
 			original_test["simple"].append(ts)
+	print("Complex changes: {}, simple changes: {}".format(cr, sr))
+	a = bbb
 
 	print("\n{} original test complex, {} original test simple".format(len(original_test["complex"]), len(original_test["simple"])))
 
