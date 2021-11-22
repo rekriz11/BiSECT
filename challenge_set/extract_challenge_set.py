@@ -30,6 +30,7 @@ def main(args):
 			else:
 				original_test['complex'].append(instance[0])
 				original_test['simple'].append(instance[2])
+	print("Source Endings: {}".format(source_endings))
 	print("Source Endings: {}, Target Endings: {}".format(dict(Counter(source_endings)), dict(Counter(target_endings))))
 
 	print("Length diffs: {}, Not complete source: {}, Not complete target: {}".format(length_diffs, len(source_endings), len(target_endings)))
