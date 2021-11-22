@@ -19,7 +19,7 @@ def main(args):
 	length_diffs = 0
 	for i, instance in enumerate(labeled_test_data):
 		if int(instance[3]) == 3:
-			if len(instance[0]) < 0.8 * len(instance[2]) or len(instance[2]) < 0.8 * len(instance[0]):
+			if len(instance[0].split()) < 0.8 * len(instance[2].split()) or len(instance[2].split()) < 0.8 * len(instance[0].split()):
 				print("\nComplex: {}\nSplit: {}".format(instance[0], instance[2]))
 				length_diffs += 1
 			else:
