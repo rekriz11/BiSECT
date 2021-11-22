@@ -1,4 +1,5 @@
 import argparse
+from collections import Counter
 
 def read_file(filepath):
 	data = []
@@ -22,14 +23,14 @@ def main(args):
 			if len(instance[0].split()) < 0.8 * len(instance[2].split()) or len(instance[2].split()) < 0.8 * len(instance[0].split()):
 				#print("\nComplex: {}\nSplit: {}".format(instance[0], instance[2]))
 				length_diffs += 1
-			elif instance[0][-1] not in [".", "?", "!"]:
+			elif instance[0][-1] not in ['.', '?', '!']:
 				not_completes.append(instance[0][-1])
-			elif instance[2][-1] not in [".", "?", "!"]:
+			elif instance[2][-1] not in ['.', '?', '!']:
 				not_completes.append(instance[2][-1])
 			else:
 				original_test['complex'].append(instance[0])
 				original_test['simple'].append(instance[2])
-	print("Endings: {}".format(not_completes))
+	print("Endings: {}".format(dict(Counter(not_completes))))
 	print("Length diffs: {}, Not completes: {}".format(length_diffs, len(not_completes)))
 
 
