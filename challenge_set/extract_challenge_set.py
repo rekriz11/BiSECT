@@ -17,7 +17,7 @@ def main(args):
 	labeled_test_data = read_file(args.labeled_test_file)
 
 	original_test = {"complex": [], "simple": []}
-	length_diffs, not_completes = 0, []
+	length_diffs, source_endings, target_endings = 0, [], []
 	for i, instance in enumerate(labeled_test_data):
 		if int(instance[3]) == 3:
 			if len(instance[0].split()) < 0.8 * len(instance[2].split()) or len(instance[2].split()) < 0.8 * len(instance[0].split()):
@@ -30,8 +30,9 @@ def main(args):
 			else:
 				original_test['complex'].append(instance[0])
 				original_test['simple'].append(instance[2])
-	print("Endings: {}".format(dict(Counter(not_completes))))
-	print("Length diffs: {}, Not completes: {}".format(length_diffs, len(not_completes)))
+	print("Source Endings: {}, Target Endings: {}".format(dict(Counter(source_endings)), dict(Counter(target_endings))))
+
+	print("Length diffs: {}, Not complete source: {}, Not complete target: {}".format(length_diffs, len(source_endings), len(target_endings)))
 
 
 	print("\n{} challenge test complex, {} challenge test simple".format(len(original_test["complex"]), len(original_test["simple"])))
