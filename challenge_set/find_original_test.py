@@ -4,7 +4,7 @@ def read_file(filepath):
 	data = []
 	with open(filepath) as f:
 		for line in f:
-			data.append(line.strip())
+			data.append(line.strip().split("\t"))
 	return data
 
 def write_output(data, output_path):
@@ -13,36 +13,32 @@ def write_output(data, output_path):
 			f.write(d + "\n")
 
 def main(args):
-	train_complex = read_file(args.data_folder + "train.complex")
-	train_simple = read_file(args.data_folder + "train.simple")
-	train_dataset = read_file(args.data_folder + "train.dataset")
+	labeled_test_data = read_file(args.labeled_test_file)
 
 	original_test = {"complex": [], "simple": []}
-	for i, tc in enumerate(train_complex):
-		ts = train_simple[i].replace(" _SPLIT_ ", " <SEP> ")
-		ts = ts.replace("_SPLIT_ ", " <SEP> ")
-		td = train_dataset[i]
-		if td in ["jrc", "emea"]:
-			original_test["complex"].append(tc)
-			original_test["simple"].append(ts)
+	for i, instance in enumerate(labeled_test_data):
+		if int(instance[3]) == 3:
+			original_test['complex'].append(instance[0])
+			original_test['simple'].append(instance[2])
+
 
 	print("\n{} original test complex, {} original test simple".format(len(original_test["complex"]), len(original_test["simple"])))
 
-	write_output(original_test['complex'], args.output_folder + "test_original.complex")
-	write_output(original_test['simple'], args.output_folder + "test_original.simple")
+	write_output(original_test['complex'], args.output_folder + "challenge_test.src")
+	write_output(original_test['simple'], args.output_folder + "challenge_test.dst")
 
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Compute model score...')
-    parser.add_argument('-data_folder', type=str, required=True, help='Path to data')
-    parser.add_argument('-output_folder', type=str, required=True, help='Path to write output')
+    parser.add_argument('-labeled_test_file', type=str, required=True, help='Path to labeled test data')
+    parser.add_argument('-output_folder', type=str, required=True, help='Path to output folder')
     args = parser.parse_args()
     main(args)
 
 
 '''
-python challenge_set/find_original_test.py \
--data_folder /exp/rkriz/data/bisect/en-final/ \
+python challenge_set/extract_challenge_set.py \
+-data_folder /exp/rkriz/data/bisect/challenge_set/ \
 -output_folder /exp/rkriz/data/bisect/challenge_set/
 '''
