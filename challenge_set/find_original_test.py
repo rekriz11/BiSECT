@@ -39,6 +39,6 @@ if __name__ == '__main__':
 
 '''
 python challenge_set/extract_challenge_set.py \
--data_folder /exp/rkriz/data/bisect/challenge_set/ \
--output_folder /exp/rkriz/data/bisect/challenge_set/
+-data_folder data/challenge_set/ \
+-output_folder data/challenge_set/
 '''
