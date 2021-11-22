@@ -27,7 +27,7 @@ def main(args):
 			else:
 				original_test['complex'].append(instance[0])
 				original_test['simple'].append(instance[2])
-	print("Length diffs: {}, Not completes: {}".format(length_diffs, not_complete))
+	print("Length diffs: {}, Not completes: {}".format(length_diffs, not_completes))
 
 
 	print("\n{} challenge test complex, {} challenge test simple".format(len(original_test["complex"]), len(original_test["simple"])))
