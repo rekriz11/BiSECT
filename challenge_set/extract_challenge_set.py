@@ -24,9 +24,9 @@ def main(args):
 				#print("\nComplex: {}\nSplit: {}".format(instance[0], instance[2]))
 				length_diffs += 1
 			elif instance[0][-1] not in ['.', '?', '!']:
-				not_completes.append(instance[0][-1])
+				source_endings.append(instance[0][-1])
 			elif instance[2][-1] not in ['.', '?', '!']:
-				not_completes.append(instance[2][-1])
+				target_endings.append(instance[2][-1])
 			else:
 				original_test['complex'].append(instance[0])
 				original_test['simple'].append(instance[2])
