@@ -22,8 +22,9 @@ def main(args):
 			if len(instance[0]) < 0.8 * len(instance[2]) or len(instance[2]) < 0.8 * len(instance[0]):
 				print("\nComplex: {}\nSplit: {}".format(instance[0], instance[2]))
 				length_diffs += 1
-			original_test['complex'].append(instance[0])
-			original_test['simple'].append(instance[2])
+			else:
+				original_test['complex'].append(instance[0])
+				original_test['simple'].append(instance[2])
 	print("Length diffs: {}".format(length_diffs))
 
 
