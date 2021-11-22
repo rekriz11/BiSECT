@@ -18,11 +18,13 @@ def main(args):
 	original_test = {"complex": [], "simple": []}
 	for i, instance in enumerate(labeled_test_data):
 		if int(instance[3]) == 3:
+			if len(instance[0]) < 0.75 * len(instance[2]):
+				print("\nComplex: {}\nSplit: {}".format(instance[0], instance[2]))
 			original_test['complex'].append(instance[0])
 			original_test['simple'].append(instance[2])
 
 
-	print("\n{} original test complex, {} original test simple".format(len(original_test["complex"]), len(original_test["simple"])))
+	print("\n{} challenge test complex, {} challenge test simple".format(len(original_test["complex"]), len(original_test["simple"])))
 
 	write_output(original_test['complex'], args.output_folder + "challenge_test.src")
 	write_output(original_test['simple'], args.output_folder + "challenge_test.dst")
